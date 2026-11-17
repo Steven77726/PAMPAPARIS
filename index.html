@@ -2,17 +2,21 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ead6c5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Carte PAMPA PARIS</title>
-<meta name="theme-color" content="#e9d4c1">
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#e9d4c1}
-main{max-width:1000px;margin:0 auto}
-img{display:block;width:100%;height:auto}
+html{margin:0;padding:0;background:#ead6c5;-webkit-text-size-adjust:100%}
+body{margin:0;padding:0;min-width:0;overflow-x:hidden;background:#ead6c5}
+main{display:block;margin:0;padding:0;width:100%;max-width:none}
+.menu{display:block;width:100%;max-width:none;height:auto;margin:0;padding:0;border:0}
+@media(min-width:900px){main{max-width:900px;margin:auto}}
 </style>
 </head>
 <body>
-<main><img src="./CARTE.PNG" alt="Carte du restaurant PAMPA PARIS : menu, cocktails, vins, spiritueux et boissons"></main>
+<main><img class="menu" src="./CARTE.PNG" alt="Carte du restaurant PAMPA PARIS : menu à 99 euros, cocktails, vins, spiritueux et softs" fetchpriority="high" decoding="async"></main>
 </body>
 </html>
