@@ -11,12 +11,14 @@ main{width:100%;margin:0 auto}.menu{display:block;width:100%;height:auto;border:
 .intro{position:fixed;inset:0;z-index:10;background:#07100a;overflow:hidden;display:grid;place-items:center;opacity:1;transition:opacity .4s ease,visibility .4s ease}
 .intro.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .intro img{width:100%;height:100%;object-fit:contain;display:block;animation:reveal 1.45s cubic-bezier(.22,.7,.24,1) both;filter:drop-shadow(0 0 5px rgba(223,175,84,.2))}
+.intro::before{content:"";position:absolute;inset:-25%;z-index:2;pointer-events:none;background:radial-gradient(ellipse 12% 42% at 50% 50%,rgba(255,244,200,.36) 0%,rgba(255,211,117,.16) 34%,transparent 75%);mix-blend-mode:screen;filter:blur(12px);transform:translateX(-85%) rotate(-17deg);animation:glide 1.65s cubic-bezier(.2,.5,.4,1) .2s both}
 .intro::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,218,132,.13) 48%,transparent 60%);transform:translateX(-150%);animation:sweep 1.55s ease-in-out .15s both;pointer-events:none}
 @keyframes reveal{0%{opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-18px) scale(1.025)}15%{opacity:1}85%,100%{opacity:1;clip-path:inset(0 0 0 0);transform:translateX(0) scale(1)}}
+@keyframes glide{0%{opacity:0;transform:translateX(-85%) rotate(-17deg)}20%{opacity:1}80%{opacity:1}100%{opacity:0;transform:translateX(85%) rotate(-17deg)}}
 @keyframes sweep{to{transform:translateX(150%)}}
-@media(prefers-reduced-motion:reduce){.intro img,.intro::after{animation:none}.intro{transition:none}}
+@media(prefers-reduced-motion:reduce){.intro img,.intro::before,.intro::after{animation:none}.intro{transition:none}}
 </style></head><body>
-<div class="intro" id="intro" aria-label="Bienvenue à La Pampa"><img src="./logo.PNG" alt="Bienvenue, en petite Italie, profitez bien" fetchpriority="high"></div>
+<div class="intro" id="intro" aria-label="Bienvenue à La Pampa"><img src="./logo.PNG" alt="Visuel d’accueil La Pampa" fetchpriority="high"></div>
 <main><img class="menu" src="./CARTE.PNG" alt="Carte PAMPA PARIS : menu, cocktails, vins, spiritueux et boissons"></main>
 <script>
 (function(){
