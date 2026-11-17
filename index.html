@@ -1,22 +1,29 @@
 <!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ead6c5">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>Carte PAMPA PARIS</title>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08100b"><title>Carte PAMPA PARIS</title>
 <style>
 *{box-sizing:border-box}
-html{margin:0;padding:0;background:#ead6c5;-webkit-text-size-adjust:100%}
-body{margin:0;padding:0;min-width:0;overflow-x:hidden;background:#ead6c5}
-main{display:block;margin:0;padding:0;width:100%;max-width:none}
-.menu{display:block;width:100%;max-width:none;height:auto;margin:0;padding:0;border:0}
-@media(min-width:900px){main{max-width:900px;margin:auto}}
-</style>
-</head>
-<body>
-<main><img class="menu" src="./CARTE.PNG" alt="Carte du restaurant PAMPA PARIS : menu à 99 euros, cocktails, vins, spiritueux et softs" fetchpriority="high" decoding="async"></main>
-</body>
-</html>
+html,body{margin:0;min-height:100%;background:#ead6c5;-webkit-text-size-adjust:100%}
+body{overflow-x:hidden}
+main{width:100%;margin:0 auto}.menu{display:block;width:100%;height:auto;border:0}
+@media(min-width:900px){main{max-width:900px}}
+.intro{position:fixed;inset:0;z-index:10;background:#07100a;overflow:hidden;display:grid;place-items:center;opacity:1;transition:opacity .4s ease,visibility .4s ease}
+.intro.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.intro img{width:100%;height:100%;object-fit:contain;display:block;animation:reveal 1.45s cubic-bezier(.22,.7,.24,1) both;filter:drop-shadow(0 0 5px rgba(223,175,84,.2))}
+.intro::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,218,132,.13) 48%,transparent 60%);transform:translateX(-150%);animation:sweep 1.55s ease-in-out .15s both;pointer-events:none}
+@keyframes reveal{0%{opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-18px) scale(1.025)}15%{opacity:1}85%,100%{opacity:1;clip-path:inset(0 0 0 0);transform:translateX(0) scale(1)}}
+@keyframes sweep{to{transform:translateX(150%)}}
+@media(prefers-reduced-motion:reduce){.intro img,.intro::after{animation:none}.intro{transition:none}}
+</style></head><body>
+<div class="intro" id="intro" aria-label="Bienvenue à La Pampa"><img src="./logo.PNG" alt="Bienvenue, en petite Italie, profitez bien" fetchpriority="high"></div>
+<main><img class="menu" src="./CARTE.PNG" alt="Carte PAMPA PARIS : menu, cocktails, vins, spiritueux et boissons"></main>
+<script>
+(function(){
+const intro=document.getElementById('intro');
+const start=performance.now();
+const dismiss=()=>{const remaining=Math.max(0,2000-(performance.now()-start));setTimeout(()=>{intro.classList.add('hidden');setTimeout(()=>intro.remove(),450)},remaining)};
+if(document.readyState==='complete')dismiss();else window.addEventListener('load',dismiss,{once:true});
+setTimeout(dismiss,3200);
+})();
+</script></body></html>
